@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>List of Items</h1>
+    <ul id="items"></ul>
+    <input type="text" id="newText" />
+    <input type="button" value="Add"
+           onclick="addItem()">
+    <!--&lt;!&ndash;<script>&ndash;&gt;-->
+        <!--&lt;!&ndash;function addItem() {&ndash;&gt;-->
+            <!--&lt;!&ndash;let textToAdd = document.querySelector('#newText').value;&ndash;&gt;-->
+            <!--&lt;!&ndash;let newLi = document.createElement("li");&ndash;&gt;-->
+            <!--&lt;!&ndash;newLi.appendChild(document.createTextNode(textToAdd));&ndash;&gt;-->
+            <!--&lt;!&ndash;let deleteSpan = document.createElement("span");&ndash;&gt;-->
+            <!--&lt;!&ndash;deleteSpan.innerHTML = "<a href='#'>[Delete]</a>";&ndash;&gt;-->
+            <!--&lt;!&ndash;deleteSpan.firstChild.addEventListener('click', deleteItem);&ndash;&gt;-->
+            <!--&lt;!&ndash;newLi.appendChild(deleteSpan);&ndash;&gt;-->
+            <!--&lt;!&ndash;document.getElementById("items").appendChild(newLi);&ndash;&gt;-->
+            <!--&lt;!&ndash;document.getElementById('newText').value = '';&ndash;&gt;-->
+            <!--&lt;!&ndash;function deleteItem() {&ndash;&gt;-->
+                <!--&lt;!&ndash;let li = this.parentNode.parentNode;&ndash;&gt;-->
+                <!--&lt;!&ndash;let ul = li.parentNode;&ndash;&gt;-->
+                <!--&lt;!&ndash;ul.removeChild(li);&ndash;&gt;-->
+            <!--&lt;!&ndash;}&ndash;&gt;-->
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+    <!--&lt;!&ndash;</script>-->
+
+    <script>
+        function addItem() {
+            let items = document.getElementById("items");
+            let textToAdd = document.createElement("li");
+            let text = document.getElementById("newText").value;
+            textToAdd.textContent = text;
+            let span = document.createElement("span");
+            span.innerHTML =" <a href='#'>[Delete]</a>";
+            span.addEventListener('click', deleteItem);
+            textToAdd.appendChild(span);
+            items.appendChild(textToAdd);
+            document.getElementById("newText").value = '';
+
+        }
+        function deleteItem() {
+            let targetElement = this.parentNode;
+            let wholeList = targetElement.parentNode;
+            wholeList.removeChild(targetElement);
+        }
+</script>
+</body>
+</html>
